@@ -21,8 +21,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./vbet
 
       - name: Run Semantic Release
         run: npx semantic-release
+        working-directory: ./vbet
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
