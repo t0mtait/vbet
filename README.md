@@ -1,6 +1,6 @@
 # vbet-v2
 
-### this repository is a WIP
+### this repository is a WIP.
 
 Virtual betting platform. built with NextJS.
 
