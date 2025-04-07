@@ -1,5 +1,6 @@
 'use client'; 
 import { Button, Input, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TextInput } from "flowbite-react";
+import { Black_And_White_Picture } from "next/font/google";
 import { useEffect, useState } from "react"; 
 
 const OptionsComponent = () => {
@@ -57,23 +58,29 @@ const OptionsComponent = () => {
           </TableRow>
         </TableHead>
         <TableBody className="divide-y">
-          {options.length > 0 ? (
-            options.map((option, index) => (
-              <TableRow key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {option.name} {/* Assuming 'name' is a field in your DynamoDB */}
-                </TableCell>
-                <TableCell>{option.odds}</TableCell> {/* Assuming 'price' is a field in your DynamoDB */}
-                <TableCell><TextInput id="email1" type="number"/></TableCell>
-                <TableCell><Button>Wager</Button></TableCell>
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan="4" className="text-center">No options available</TableCell>
+        {options.length > 0 ? (
+          options.map((option, index) => (
+            <TableRow key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                {option.name}
+              </TableCell>
+              <TableCell>{option.odds}</TableCell>
+              <TableCell>
+                <TextInput id={`input-${index}`} type="number" />
+              </TableCell>
+              <TableCell>
+                <Button>Wager</Button>
+              </TableCell>
             </TableRow>
-          )}
-        </TableBody>
+          ))
+        ) : (
+          <TableRow>
+            <TableCell colSpan="4" className="text-center">
+              No options available
+            </TableCell>
+          </TableRow>
+        )}
+      </TableBody>
       </Table>
     </div>
   );

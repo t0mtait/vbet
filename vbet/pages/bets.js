@@ -6,8 +6,6 @@ const Bets = () => {
   return (
     <div>
         <Navbar />
-        <TextInput id="username" type="text" placeholder = "enter username here..."/>
-
     </div>
   );
 };

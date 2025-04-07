@@ -1,12 +1,14 @@
 import React from 'react';
+import Navbar from '../app/components/Navbar';
+import Lb from '../app/components/Leaderboard'
+import "../app/globals.css"
 
-const Leaderboard = () => {
+export default function Leaderboard() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-24 dark:bg-gray-900">
-      <h1>Leaderboard</h1>
-      <p>This is the leaderboard page.</p>
+    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-24 bg-white dark:bg-gray-900">
+      <Navbar/>
+      <Lb/>
     </main>
   );
-};
+}
 
-export default Leaderboard;
