@@ -1,5 +1,5 @@
 # vbet-v2
 
-virtual betting platform. built with NextJS.
+Virtual betting platform. built with NextJS.
 
-this repository has automatic releases enabled via GitHub Actions.
+This repository has automatic releases enabled via GitHub Actions.
