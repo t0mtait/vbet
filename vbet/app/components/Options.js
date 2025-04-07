@@ -1,3 +1,4 @@
+'use client'; 
 import { Button, Input, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react"; 
 
