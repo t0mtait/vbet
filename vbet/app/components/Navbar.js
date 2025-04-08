@@ -19,7 +19,7 @@ const NavbarComponent = () => {
           Bets
         </NavbarLink>
         <NavbarLink as={Link} href="https://github.com/t0mtait/vbet-v2/releases" className="custom-navbar-link-2">
-          What's new
+          Whats new
         </NavbarLink>
       </NavbarCollapse>
     </Navbar>
