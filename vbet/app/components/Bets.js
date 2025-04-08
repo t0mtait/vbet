@@ -41,23 +41,22 @@ const BetsComponent = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeadCell>User</TableHeadCell>
-            <TableHeadCell>Option</TableHeadCell>
-            <TableHeadCell>Status</TableHeadCell>
-            <TableHeadCell>Wager</TableHeadCell>
-            <TableHeadCell>Timestamp</TableHeadCell>
+          <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">ID</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">User</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Status</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Pick</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Wager</TableHeadCell>
           </TableRow>
         </TableHead>
         <TableBody className="divide-y">
           {bets.length > 0 ? (
             bets.map((bet, index) => (
-              <TableRow key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{bet.user}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{bet.status}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{bet.option}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{bet.wager}$</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{bet.timestamp}</TableCell> 
-              </TableRow>
+              <TableRow key={index} className="border-gray-700 bg-gray-800">
+                <TableCell className="whitespace-nowrap font-medium text-white">{bet.id}</TableCell>
+                <TableCell className="whitespace-nowrap font-medium text-white">{bet.user}</TableCell>
+                <TableCell className="whitespace-nowrap font-medium text-white">{bet.status}</TableCell>
+                <TableCell className="whitespace-nowrap font-medium text-white">{bet.option}</TableCell>
+                <TableCell className="whitespace-nowrap font-medium text-white">{bet.wager}$</TableCell>              </TableRow>
             ))
           ) : (
             <TableRow>

@@ -40,25 +40,25 @@ const UsersComponent = () => {
     <div className="overflow-x-auto">
       <Table>
         <TableHead>
-          <TableRow>
-            <TableHeadCell>User</TableHeadCell>
-            <TableHeadCell>Bets Won</TableHeadCell>
-            <TableHeadCell>Bets Lost</TableHeadCell>
-            <TableHeadCell>Amount Wagered</TableHeadCell>
-            <TableHeadCell>Balance</TableHeadCell>
+          <TableRow className="border-gray-700 bg-gray-800">
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">User</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Bets Won</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Bets Lost</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Amount Wagered</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Balance</TableHeadCell>
           </TableRow>
         </TableHead>
         <TableBody className="divide-y">
           {users.length > 0 ? (
             users.map((user, index) => (
-              <TableRow key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+              <TableRow key={index} className="border-gray-700 bg-gray-800">
+                <TableCell className="whitespace-nowrap font-medium text-white">
                   {user.username} {/* Assuming 'name' is a field in your DynamoDB */}
                 </TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{user.bets_won}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{user.bets_lost}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{user.amount_wagered}$</TableCell> 
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{user.balance}$</TableCell>{/* Assuming 'price' is a field in your DynamoDB */}
+                <TableCell className="whitespace-nowrap font-medium text-white">{user.bets_won}</TableCell>
+                <TableCell className="whitespace-nowrap font-medium text-white">{user.bets_lost}</TableCell>
+                <TableCell className="whitespace-nowrap font-medium text-white">{user.amount_wagered}$</TableCell> 
+                <TableCell className="whitespace-nowrap font-medium text-white">{user.balance}$</TableCell>{/* Assuming 'price' is a field in your DynamoDB */}
               </TableRow>
             ))
           ) : (

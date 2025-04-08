@@ -8,7 +8,8 @@ export default async function handler(req, res) {
       TableName: 'vbet-bets', 
     };
     const result = await dynamoDB.scan(params).promise();
-    res.status(200).json(result.Items);
+    const sortedItems = result.Items.sort((a, b) => b.id - a.id);
+    res.status(200).json(sortedItems);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
