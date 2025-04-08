@@ -29,21 +29,27 @@ export default async function handler(req, res) {
     // Write to the vbet-bets table
     await dynamoDB.put(params).promise();
 
-    // Update the user's balance in the vbet-users table
+    // Update the user's balance and amount_wagered in the vbet-users table
     const updateParams = {
       TableName: 'vbet-users',
       Key: { username: user }, // Assuming the primary key is 'username'
-      UpdateExpression: 'SET balance = balance - :wager',
+      UpdateExpression: 'SET balance = balance - :wager, amount_wagered = if_not_exists(amount_wagered, :initial) + :wager',
       ExpressionAttributeValues: {
         ':wager': parseFloat(amount),
+        ':initial': 0, // Initialize amount_wagered to 0 if it doesn't exist
       },
       ConditionExpression: 'balance >= :wager', // Ensure the user has enough balance
       ReturnValues: 'UPDATED_NEW',
     };
 
-    await dynamoDB.update(updateParams).promise();
+    const result = await dynamoDB.update(updateParams).promise();
 
-    res.status(200).json({ message: 'Bet placed successfully', transactionId: params.Item.id });
+    res.status(200).json({ 
+      message: 'Bet placed successfully', 
+      transactionId: params.Item.id,
+      updatedBalance: result.Attributes.balance,
+      updatedAmountWagered: result.Attributes.amount_wagered,
+    });
   } catch (error) {
     console.error('Error processing request:', error);
 
