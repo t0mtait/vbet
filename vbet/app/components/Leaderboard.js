@@ -57,8 +57,8 @@ const UsersComponent = () => {
                 </TableCell>
                 <TableCell className="whitespace-nowrap font-medium text-white">{user.bets_won}</TableCell>
                 <TableCell className="whitespace-nowrap font-medium text-white">{user.bets_lost}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-white">{user.amount_wagered}$</TableCell> 
-                <TableCell className="whitespace-nowrap font-medium text-white">{user.balance}$</TableCell>{/* Assuming 'price' is a field in your DynamoDB */}
+                <TableCell className="whitespace-nowrap font-medium text-white">{user.amount_wagered.toFixed(2)}$</TableCell> 
+                <TableCell className="whitespace-nowrap font-medium text-white">{user.balance.toFixed(2)}$</TableCell>{/* Assuming 'price' is a field in your DynamoDB */}
               </TableRow>
             ))
           ) : (
