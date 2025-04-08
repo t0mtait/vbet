@@ -5,7 +5,7 @@ import "../app/globals.css"
 
 export default function Leaderboard() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-24 bg-white dark:bg-gray-900">
+    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-24 bg-gray-900">
       <Navbar/>
       <Lb/>
     </main>
