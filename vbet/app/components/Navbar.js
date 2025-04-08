@@ -18,8 +18,8 @@ const NavbarComponent = () => {
         <NavbarLink as={Link} href="/bets" className="custom-navbar-link">
           Bets
         </NavbarLink>
-        <NavbarLink as={Link} href="/releases" className="custom-navbar-link">
-          Releases
+        <NavbarLink as={Link} href="https://github.com/t0mtait/vbet-v2/releases" className="custom-navbar-link-2">
+          What's new
         </NavbarLink>
       </NavbarCollapse>
     </Navbar>

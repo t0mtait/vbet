@@ -6,5 +6,8 @@
 
 .custom-navbar-link {
     @apply text-white hover:text-blue-300;
-    
   }
+
+  .custom-navbar-link-2 {
+    @apply text-yellow-200 hover:text-blue-300;
+}

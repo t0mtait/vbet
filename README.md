@@ -1,4 +1,4 @@
-# vbet-v2
+# vbet
 
 ### this repository is a WIP.
 
