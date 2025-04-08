@@ -3,3 +3,8 @@
 @source "../.flowbite-react/class-list.json";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+.custom-navbar-link {
+    @apply text-white hover:text-blue-300;
+    
+  }
