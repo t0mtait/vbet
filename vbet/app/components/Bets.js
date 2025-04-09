@@ -45,7 +45,7 @@ const BetsComponent = () => {
             <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">User</TableHeadCell>
             <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Status</TableHeadCell>
             <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Pick</TableHeadCell>
-            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Return</TableHeadCell>
+            <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Multiplier</TableHeadCell>
             <TableHeadCell className="whitespace-nowrap font-medium text-white bg-gray-800">Wager</TableHeadCell>
           </TableRow>
         </TableHead>
@@ -53,12 +53,12 @@ const BetsComponent = () => {
           {bets.length > 0 ? (
             bets.map((bet, index) => (
               <TableRow key={index} className="border-gray-700 bg-gray-800">
-                <TableCell className="whitespace-nowrap font-medium text-white">{bet.id}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-white">{bet.user}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-white">{bet.status}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-white">{bet.option}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-white">{bet.return}</TableCell>
-                <TableCell className="whitespace-nowrap font-medium text-white">{bet.wager}$</TableCell>              </TableRow>
+                <TableCell className="whitespace-nowrap font-small text-white">{bet.id}</TableCell>
+                <TableCell className="whitespace-nowrap font-small text-white">{bet.user}</TableCell>
+                <TableCell className="whitespace-nowrap font-small text-white">{bet.status}</TableCell>
+                <TableCell className="whitespace-nowrap font-small text-white">{bet.option}</TableCell>
+                <TableCell className="whitespace-nowrap font-small text-white">{bet.return}</TableCell>
+                <TableCell className="whitespace-nowrap font-small text-white">{bet.wager}$</TableCell>    </TableRow>
             ))
           ) : (
             <TableRow>

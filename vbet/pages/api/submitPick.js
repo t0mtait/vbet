@@ -7,11 +7,25 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { user, optionName, odds, amount } = req.body;
+  var { user, optionName, odds, amount } = req.body;
 
   if (!user || !optionName || !odds || !amount) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
+  user = user.trim();
+  if (user == 'tom' || user == 'TOM') {
+      user = 'Tom'
+  }
+  if (user == 'cj' || user == 'Cj') {
+    user = 'CJ'
+  }
+  if (user == 'stef' || user == 'STEF') {
+    user = 'Stef'
+  }
+  if (user == 'chris' || user == 'CHRIS') {
+    user = 'Chris'
+  }
+
 
   const params = {
     TableName: 'vbet-bets',
@@ -20,7 +34,7 @@ export default async function handler(req, res) {
       id: Date.now().toString(), // Unique ID based on the current timestamp
       option: optionName,
       return: odds,
-      status: 'unsettled',
+      status: 'Unsettled',
       wager: parseFloat(amount),
     },
   };
