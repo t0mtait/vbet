@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     TableName: 'vbet-bets',
     Item: {
       user,
-      id: Date.now().toString(), // Unique ID based on the current timestamp
+      id: new Date().toISOString().replace(/[-:TZ.]/g, ''), // Readable numeric ID
       option: optionName,
       return: odds,
       status: 'Unsettled',
