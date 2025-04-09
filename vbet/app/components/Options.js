@@ -141,7 +141,7 @@ const OptionsComponent = () => {
             
           </>
         ) : (
-          <p className="text-white">No bets added yet.</p>
+          <p className="text-white">No picks added yet.</p>
         )}
       </div>
       <div className="flex items-center space-x-4 mb-2">
