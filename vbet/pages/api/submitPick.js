@@ -7,9 +7,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  var { user, optionName, odds, amount } = req.body;
+  var { user, options, odds, amount } = req.body;
 
-  if (!user || !optionName || !odds || !amount) {
+
+  if (!user || !options || !odds || !amount) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
   user = user.trim();
@@ -26,13 +27,16 @@ export default async function handler(req, res) {
     user = 'Chris'
   }
 
-
+  const formattedOptionNames = options.map(
+    (option) => `${option.category}: ${option.name}`
+  ).join(', ');
+  
   const params = {
     TableName: 'vbet-bets',
     Item: {
       user,
       id: new Date().toISOString().replace(/[-:TZ.]/g, ''), // Readable numeric ID
-      option: optionName,
+      option: formattedOptionNames,
       return: odds,
       status: 'Unsettled',
       wager: parseFloat(amount),
