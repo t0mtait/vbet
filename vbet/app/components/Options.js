@@ -1,5 +1,5 @@
 'use client';
-import { Button, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TextInput, Select } from "flowbite-react";
+import { Button,TextInput, Select } from "flowbite-react";
 import { useEffect, useState } from "react"; 
 
 const OptionsComponent = () => {
