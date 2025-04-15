@@ -1,5 +1,5 @@
 'use client';
-import { Button, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TextInput } from "flowbite-react";
+import { Button, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TextInput, Select } from "flowbite-react";
 import { useEffect, useState } from "react"; 
 
 const OptionsComponent = () => {
@@ -9,6 +9,7 @@ const OptionsComponent = () => {
   const [inputValues, setInputValues] = useState({}); // State to track input field values
   const [username, setUsername] = useState(''); // State to track the username input
   const [wager, setWager] = useState(''); // State to track the wager amount
+  const [groupedOptions, setGroupedOptions] = useState({}); // State to hold grouped options by category
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,18 @@ const OptionsComponent = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
+         // Group options by category
+         const grouped = data.reduce((acc, option) => {
+          const category = option.category || 'Other'; // Default to "Other" if no category
+          if (!acc[category]) {
+            acc[category] = [];
+          }
+          acc[category].push(option);
+          return acc;
+        }, {});
+
         setOptions(data); // Set the fetched data to state
+        setGroupedOptions(grouped); // Set grouped options
       } catch (err) {
         setError(err.message);
       } finally {
@@ -29,21 +41,22 @@ const OptionsComponent = () => {
     fetchData(); // Call the function to fetch data
   }, []);
 
+  const addToSlip = (option) => {
+    // Check if the option is already in the bet slip by comparing its id
+    const isOptionInSlip = Object.values(inputValues).some(
+      (existingOption) => existingOption.id === option.id
+    );
   
-  
-  const addToSlip = (option, index) => {
-    if (inputValues[index]) {
+    if (isOptionInSlip) {
       alert("This option is already in the bet slip.");
       return;
     }
-    setInputValues((prevValues) => {
-      const currentAmount = prevValues[index] || 1; // Default to 1 if no value exists
-      const updatedAmount = currentAmount * option.odds; // Multiply by the option's return (odds)
-      return {
-        ...prevValues,
-        [index]: updatedAmount, // Update the value for the corresponding row
-      };
-    });
+  
+    // Add the option to the bet slip
+    setInputValues((prevValues) => ({
+      ...prevValues,
+      [option.id]: option, // Use the option's id as the key
+    }));
   };
 
   const placeBet = async () => {
@@ -62,12 +75,12 @@ const OptionsComponent = () => {
       return;
     }
   
-    const selectedOptions = Object.entries(inputValues)
-      .filter(([index]) => options[index]) // Ensure the option exists
-      .map(([index]) => ({
-        name: options[index]?.name,
-        odds: options[index]?.odds,
-      }));
+    const selectedOptions = Object.values(inputValues).map((option) => ({
+      name: option.name,
+      category: option.category,
+      odds: option.odds,
+    }))
+
   
     const totalOdds = Object.entries(inputValues).reduce(
       (total, [index]) => total * (options[index]?.odds || 1),
@@ -83,7 +96,7 @@ const OptionsComponent = () => {
         body: JSON.stringify({
           user: username,
           amount: parseFloat(wager), // Include wager in the request
-          optionName: selectedOptions.map((option) => option.name).join(', '), // Join names with a comma and space
+          options: selectedOptions,
           odds: totalOdds,
         }),
       });
@@ -119,26 +132,24 @@ const OptionsComponent = () => {
 
   return (
     <div className="overflow-x-auto">
-      
       <div className="mb-4">
         <h2 className="text-lg font-bold text-white">Current Bet Slip</h2>
         {Object.entries(inputValues).length > 0 ? (
           <>
             <ul className="text-white">
-              {Object.entries(inputValues).map(([index, value]) => (
-                <li key={index}>
-                  {options[index]?.name || "Unknown Option"}: {value}x
+              {Object.values(inputValues).map((option) => (
+                <li key={option.id}>
+                 [{option.category}] {option.name || "Unknown Option"} - ({option.odds}x)
                 </li>
               ))}
             </ul>
             <p className="text-white font-bold mt-2">
               Total Odds:{" "}
-              {Object.entries(inputValues).reduce(
-                (total, [index]) => total * options[index]?.odds || 1,
+              {Object.values(inputValues).reduce(
+                (total, option) => total * option.odds || 1,
                 1
-              ).toFixed(2)}
+              ).toFixed(2)}x
             </p>
-            
           </>
         ) : (
           <p className="text-white">No picks added yet.</p>
@@ -174,46 +185,37 @@ const OptionsComponent = () => {
       >Place</Button>
       </div>
 
-      <Table className="bg-gray-800">
-        <TableHead>
-          <TableRow>
-            <TableHeadCell className="text-white bg-gray-800">Pick</TableHeadCell>
-            <TableHeadCell className="text-white bg-gray-800">Return</TableHeadCell>
-            <TableHeadCell className="text-white bg-gray-800">Add to slip</TableHeadCell>
-          </TableRow>
-        </TableHead>
-        <TableBody className="divide-y">
-  {options.length > 0 ? (
-    options.map((option, index) => (
-      <TableRow
-        key={index}
-        className="bg-white border-gray-700 bg-gray-800 text-sm h-8" // Reduce height and font size
-      >
-        <TableCell className="whitespace-nowrap font-medium text-white p-2">
-          {option.name}
-        </TableCell>
-        <TableCell className="text-white p-2">{option.odds}</TableCell>
-        <TableCell className="p-2">
-          <div className="flex items-center space-x-2">
-            <Button
-              className="text-xs py-1 px-10 rounded-full " // Smaller button size
-              onClick={() => addToSlip(option, index)}
-            >
-              Add
-            </Button>
-          </div>
-        </TableCell>
-      </TableRow>
-    ))
-  ) : (
-    <TableRow>
-      <TableCell colSpan="4" className="text-center p-2">
-        No options available
-      </TableCell>
-    </TableRow>
-  )}
-</TableBody>
-      </Table>
+     {/* Dropdowns for each category */}
+     {['Other', 'Chris', 'CJ', 'Stef', 'Tom'].map((category) => (
+        <div key={category} className="mb-4">
+          <h3 className="text-md font-bold text-white">{category}</h3>
+          <Select
+            className="w-full"
+            onChange={(e) => {
+              const selectedId = e.target.value; // Get the selected id from the dropdown
+              if (selectedId) {
+                const selectedOption = groupedOptions[category].find(
+                  (option) => option.id.toString() === selectedId // Ensure id comparison works
+                );
+                if (selectedOption) {
+                  addToSlip(selectedOption); // Pass the selected option object
+                } else {
+                  console.error("Selected option not found in groupedOptions");
+                }
+              }
+            }}
+          >
+            <option value="">Select an option</option>
+            {groupedOptions[category]?.map((option) => (
+              <option key={option.id} value={option.id.toString()}>
+                {option.name} - ({option.odds}x)
+              </option>
+            ))}
+          </Select>
+        </div>
+      ))}
+
+
     </div>
   );
 };
