@@ -1,0 +1,38 @@
+[
+  {
+    "username": "Tom",
+    "description": "Under 9.5 Kills",
+    "amount": 55,
+    "odds": 2,
+    "status": "won",
+    "createdAt": "2026-02-21T18:13:45.123Z",
+    "id": 1
+  },
+  {
+    "username": "Tom",
+    "description": "To Get Multi-Kill",
+    "amount": 10,
+    "odds": 3,
+    "status": "lost",
+    "createdAt": "2026-02-21T18:14:21.109Z",
+    "id": 2
+  },
+  {
+    "username": "Tom",
+    "description": "To Top Frag",
+    "amount": 10,
+    "odds": 3,
+    "status": "lost",
+    "createdAt": "2026-02-21T18:14:21.109Z",
+    "id": 3
+  },
+  {
+    "username": "Tom",
+    "description": "Enemy Team Over 15.5 Kills",
+    "amount": 10,
+    "odds": 1.6,
+    "status": "lost",
+    "createdAt": "2026-02-21T18:15:30.230Z",
+    "id": 4
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "category": "CJ",
+    "name": "Over 9.5 Kills",
+    "return": 1.5,
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "category": "CJ",
+    "name": "Under 9.5 Kills",
+    "return": 2,
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "category": "CJ",
+    "name": "To Record a 3+ Kill Round",
+    "return": 2.5,
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "category": "CJ",
+    "name": "To Get Multi-Kill",
+    "return": 3,
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "category": "Tom",
+    "name": "Over 17.5 Kills",
+    "return": 45,
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "category": "Tom",
+    "name": "Under 17.5 Kills",
+    "return": 2.2,
+    "status": "active"
+  },
+  {
+    "id": 7,
+    "category": "Tom",
+    "name": "To record a 4+ Kill round",
+    "return": 4,
+    "status": "active"
+  },
+  {
+    "id": 8,
+    "category": "Tom",
+    "name": "To Top Frag",
+    "return": 3,
+    "status": "active"
+  },
+  {
+    "id": 9,
+    "category": "Stef",
+    "name": "Over 12.5 Kills",
+    "return": 2,
+    "status": "active"
+  },
+  {
+    "id": 10,
+    "category": "Stef",
+    "name": "Under 12.5 Kills",
+    "return": 2.5,
+    "status": "active"
+  },
+  {
+    "id": 11,
+    "category": "Stef",
+    "name": "To Record First Blood",
+    "return": 3,
+    "status": "active"
+  },
+  {
+    "id": 12,
+    "category": "Stef",
+    "name": "To Get Multi-Kill",
+    "return": 3.2,
+    "status": "active"
+  },
+  {
+    "id": 13,
+    "category": "Chris",
+    "name": "Over 8.5 Kills",
+    "return": 1.7,
+    "status": "active"
+  },
+  {
+    "id": 14,
+    "category": "Chris",
+    "name": "Under 8.5 Kills",
+    "return": 2.3,
+    "status": "active"
+  },
+  {
+    "id": 15,
+    "category": "Chris",
+    "name": "To Plant Spike",
+    "return": 2.9,
+    "status": "active"
+  },
+  {
+    "id": 16,
+    "category": "Other Player",
+    "name": "Enemy Team Over 15.5 Kills",
+    "return": 1.6,
+    "status": "active"
+  },
+  {
+    "id": 17,
+    "category": "Other Player",
+    "name": "Enemy Team Under 15.5 Kills",
+    "return": 2.4,
+    "status": "active"
+  },
+  {
+    "id": 18,
+    "category": "Other Player",
+    "name": "Any Enemy to Record 5+ Kills",
+    "return": 2.5,
+    "status": "active"
+  },
+  {
+    "id": 19,
+    "category": "Other Player",
+    "name": "Support Player to get Multi-Kill",
+    "return": 3.5,
+    "status": "active"
+  },
+  {
+    "id": 20,
+    "category": "Match",
+    "name": "Match Goes to Overtime",
+    "return": 2.8,
+    "status": "active"
+  },
+  {
+    "id": 21,
+    "category": "Match",
+    "name": "Team to Win Map 13-11 or Better",
+    "return": 1.9,
+    "status": "active"
+  },
+  {
+    "id": 22,
+    "category": "Match",
+    "name": "Match Total Rounds Over 24.5",
+    "return": 1.8,
+    "status": "active"
+  },
+  {
+    "id": 23,
+    "category": "Match",
+    "name": "Match Total Rounds Under 24.5",
+    "return": 2.1,
+    "status": "active"
+  },
+  {
+    "id": 24,
+    "category": "Match",
+    "name": "Team to Win First Half",
+    "return": 1.9,
+    "status": "active"
+  },
+  {
+    "id": 25,
+    "category": "Match",
+    "name": "Team to Get 10+ First Blood Wins",
+    "return": 2.6,
+    "status": "active"
+  }
+]
